@@ -1,6 +1,8 @@
 package BudgetMaster;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -57,6 +59,13 @@ public class User {
                 .filter(expensesList -> Objects.equals(expensesList.getCategory(), category))
                 .collect(Collectors.toList());
     }
+    public List<Expenses> getAllExpensesByDate() {
+        return this.expensesList.stream()
+                .sorted(Comparator.comparing(Expenses::getDate))
+                .collect(Collectors.toList());
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
