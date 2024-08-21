@@ -2,6 +2,8 @@ package BudgetMaster;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 public class User {
@@ -50,7 +52,11 @@ public class User {
 
     }
 
-
+    public List<Expenses> getExpenseByCategory(String category) {
+        return this.expensesList.stream()
+                .filter(expensesList -> Objects.equals(expensesList.getCategory(), category))
+                .collect(Collectors.toList());
+    }
     @Override
     public String toString() {
         return "User{" +
